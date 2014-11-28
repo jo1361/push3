@@ -84,7 +84,7 @@
 							$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
 							
 							// if the notification contains a soundname, play it.
-							var my_media = new Media("/asset/www/beep.wav");
+							var my_media = new Media("/assets/www/beep.wav");
 							my_media.play();
 						}
 						else
@@ -95,6 +95,7 @@
 								$("#app-status-ul").append('<li>--BACKGROUND NOTIFICATION--' + '</li>');
 							
 							var urlsa = homepage + e.payload.message.split("&&<ch>&&")[1];
+							alert(urlsa);
 							$('#ifr').attr('src', urlsa);
 						}
 							alert(3);
