@@ -10,7 +10,7 @@
         <script type="text/javascript" src="PushNotification.js"></script>
         
 
-		<div id="home" style="display: none;">
+		<div id="home" style="display_: none;">
 			<div id="app-status-div">
 				<ul id="app-status-ul">
 				</ul>
@@ -46,6 +46,7 @@
 				try 
 				{ 
                 	pushNotification = window.plugins.pushNotification;
+                	alert(1);
 						$("#app-status-ul").append('<li>registering android</li>');
                     	pushNotification.register(successHandler, errorHandler, {"senderID":"410202021372","ecb":"onNotificationGCM"});		// required!
                 }
@@ -69,19 +70,21 @@
 						$('#ifr').attr('src', homepage + "?mDevice=" + encodeURI(e.regid));
 						// Your GCM push server needs to know the regID before it can push to this device
 						// here is where you might want to send it the regID for later use.
-						console.log("regID = " + e.regid);
+						//console.log
+						alert("regID = " + e.regid);
 					}
                     break;
                     
                     case 'message':
                     	// if this flag is set, this notification happened while we were in the foreground.
                     	// you might want to play a sound to get the user's attention, throw up a dialog, etc.
+                    	alert(2);
                     	if (e.foreground)
                     	{
 							$("#app-status-ul").append('<li>--INLINE NOTIFICATION--' + '</li>');
 							
 							// if the notification contains a soundname, play it.
-							var my_media = new Media("/android_asset/www/beep.wav");
+							var my_media = new Media("/asset/www/beep.wav");
 							my_media.play();
 						}
 						else
@@ -94,7 +97,7 @@
 							var urlsa = homepage + e.payload.message.split("&&<ch>&&")[1];
 							$('#ifr').attr('src', urlsa);
 						}
-							
+							alert(3);
 						$("#app-status-ul").append('<li>MESSAGE -> MSG: ' + e.payload.message + '</li>');
 						$("#app-status-ul").append('<li>MESSAGE -> MSGCNT: ' + e.payload.msgcnt + '</li>');
                     break;
